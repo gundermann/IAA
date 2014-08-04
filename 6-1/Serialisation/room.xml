@@ -1,0 +1,7 @@
+<model.Room>
+  <id>1000</id>
+  <building>C</building>
+  <roomNumber>110</roomNumber>
+  <seatCount>5000</seatCount>
+  <beamer>true</beamer>
+</model.Room>
