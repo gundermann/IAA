@@ -3,6 +3,8 @@ import java.util.List;
 
 import de.nordakademie.roommgmt.ApplicationController;
 import de.nordakademie.roommgmt.action.Action;
+import de.nordakademie.roommgmt.action.CreateRoomAction;
+import de.nordakademie.roommgmt.action.ListAllRoomsAction;
 
 /**
  * Main class of the room management application.
@@ -20,6 +22,8 @@ public class RoomManagement {
 		// Create list of actions
 		List<Action> actions = new ArrayList<Action>();
 
+		actions.add(new CreateRoomAction());
+		actions.add(new ListAllRoomsAction());
 		controller.setActions(actions);
 		// Show menu
 		controller.showMenu();

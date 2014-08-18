@@ -14,4 +14,8 @@ public final class DAOFactory {
 	private DAOFactory() {
 		// Do nothing
 	}
+	
+	public static RoomDAOImpl createRoomDAO(){
+		return new RoomDAOImpl();
+	}
 }
