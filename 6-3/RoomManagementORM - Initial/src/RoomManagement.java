@@ -3,11 +3,15 @@ import java.util.List;
 
 import de.nordakademie.roommgmt.ApplicationController;
 import de.nordakademie.roommgmt.action.Action;
+import de.nordakademie.roommgmt.action.CreateCourseAction;
 import de.nordakademie.roommgmt.action.CreateRoomAction;
 import de.nordakademie.roommgmt.action.DeleteRoomAction;
 import de.nordakademie.roommgmt.action.ExitAction;
+import de.nordakademie.roommgmt.action.ListCourseAction;
 import de.nordakademie.roommgmt.action.ListRoomsAction;
+import de.nordakademie.roommgmt.action.ShowCourseAction;
 import de.nordakademie.roommgmt.action.ShowRoomAction;
+import de.nordakademie.roommgmt.action.UpdateCourseAction;
 import de.nordakademie.roommgmt.action.UpdateRoomAction;
 
 /**
@@ -30,6 +34,10 @@ public class RoomManagement {
 		actions.add(new CreateRoomAction());
 		actions.add(new UpdateRoomAction());
 		actions.add(new DeleteRoomAction());
+		actions.add(new CreateCourseAction());
+		actions.add(new ShowCourseAction());
+		actions.add(new UpdateCourseAction());
+		actions.add(new ListCourseAction());
 		actions.add(new ExitAction());
 
 		controller.setActions(actions);

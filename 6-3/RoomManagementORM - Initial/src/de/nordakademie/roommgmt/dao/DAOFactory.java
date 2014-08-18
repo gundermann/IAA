@@ -23,4 +23,8 @@ public final class DAOFactory {
 	public static RoomDAO createRoomDAO() {
 		return new RoomDAO();
 	}
+
+	public static CourseDAO createCourseDAO() {
+		return new CourseDAO();
+	}
 }

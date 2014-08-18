@@ -14,4 +14,15 @@
 		<property name="seats" />
 		<property name="beamer" type="boolean" />
 	</class>
+		<class name="de.nordakademie.roommgmt.model.Course" table="COURSE">
+		<id name="id">
+			<generator class="native" />
+		</id>
+		<natural-id mutable="true">
+			<property name="number" not-null="true" />
+		</natural-id>
+		<property name="fieldOfStudy" not-null="true" column="FIELD_OF_STUDY" />
+		<property name="lecturer" not-null="true"/>
+		<property name="title" not-null="true" />
+	</class>
 </hibernate-mapping>

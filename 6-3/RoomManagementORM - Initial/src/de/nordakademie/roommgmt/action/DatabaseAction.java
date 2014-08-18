@@ -1,5 +1,6 @@
 package de.nordakademie.roommgmt.action;
 
+import de.nordakademie.roommgmt.dao.CourseDAO;
 import de.nordakademie.roommgmt.dao.RoomDAO;
 import de.nordakademie.roommgmt.dao.DAOFactory;
 
@@ -15,5 +16,14 @@ public abstract class DatabaseAction extends Action {
 	 */
 	public RoomDAO getRoomDAO() {
 		return DAOFactory.createRoomDAO();
+	}
+	
+	/**
+	 * Returns the {@link CourseDAO} instance.
+	 * 
+	 * @return an instance of the service.
+	 */
+	public CourseDAO getCourseDAO() {
+		return DAOFactory.createCourseDAO();
 	}
 }
