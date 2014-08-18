@@ -2,15 +2,24 @@ package de.nordakademie.roommgmt.model;
 
 import java.io.Serializable;
 
+/**
+ * The room entity.
+ */
+public class Room implements Serializable {
 
-public class Room implements Serializable{
+	/** The serial version uid. */
+	private static final long serialVersionUID = 7664217191744579056L;
 
-	private static final long serialVersionUID = 616224522362451909L;
+	/** The identifier. */
 	private Long id;
+	/** The building. */
 	private String building;
+	/** The room number. */
 	private int roomNumber;
-	private int seatCount;
-	private boolean beamerPresent;
+	/** The seat count. */
+	private int seats;
+	/** The beamer information. */
+	private boolean beamer;
 
 	public Long getId() {
 		return id;
@@ -36,20 +45,50 @@ public class Room implements Serializable{
 		this.roomNumber = roomNumber;
 	}
 
-	public int getSeatCount() {
-		return seatCount;
+	public int getSeats() {
+		return seats;
 	}
 
-	public void setSeatCount(int seatCount) {
-		this.seatCount = seatCount;
+	public void setSeats(int seats) {
+		this.seats = seats;
 	}
 
-	public boolean isBeamerPresent() {
-		return beamerPresent;
+	public boolean isBeamer() {
+		return beamer;
 	}
 
-	public void setBeamerPresent(boolean beamer) {
-		this.beamerPresent = beamer;
+	public void setBeamer(boolean beamer) {
+		this.beamer = beamer;
 	}
 
+	/** {@inheritDoc} */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((building == null) ? 0 : building.hashCode());
+		result = prime * result + roomNumber;
+		return result;
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		final Room other = (Room) obj;
+		if (building == null) {
+			if (other.building != null)
+				return false;
+		} else if (!building.equals(other.building))
+			return false;
+		if (roomNumber != other.roomNumber)
+			return false;
+		return true;
+	}
 }

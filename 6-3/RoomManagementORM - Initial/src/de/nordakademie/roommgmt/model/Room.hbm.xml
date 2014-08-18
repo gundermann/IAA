@@ -3,14 +3,15 @@
   "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-
 	<class name="de.nordakademie.roommgmt.model.Room" table="ROOM">
 		<id name="id">
-			<generator class="native"/>
+			<generator class="native" />
 		</id>
-		<property name="building" not-null="true"/>
-		<property name="roomNumber" column="ROOM_NUMBER" not-null="true"/>
-		<property name="seatCount" not-null="true"/>
-		<property name="beamerPresent" column="BEAMER" not-null="true" />
+		<natural-id mutable="true">
+			<property name="building" not-null="true" />
+			<property name="roomNumber" not-null="true" column="ROOM_NUMBER" />
+		</natural-id>
+		<property name="seats" />
+		<property name="beamer" type="boolean" />
 	</class>
 </hibernate-mapping>

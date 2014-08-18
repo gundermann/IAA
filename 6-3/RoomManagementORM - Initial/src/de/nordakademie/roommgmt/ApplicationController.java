@@ -2,7 +2,10 @@ package de.nordakademie.roommgmt;
 
 import java.util.List;
 
+import org.hibernate.Session;
+
 import de.nordakademie.roommgmt.action.Action;
+import de.nordakademie.roommgmt.action.DatabaseAction;
 
 /**
  * The application controller.
@@ -25,11 +28,26 @@ public class ApplicationController {
 			menuController.printMenu();
 			// Read user input
 			Action action = menuController.readMenuChoice();
-			try {
-				action.execute();
-			} catch (Exception exception) {
-				System.out.println("Fehler aufgetreten: "
-						+ exception.getMessage());
+			if (action instanceof DatabaseAction) {
+				Session currentSession = HibernateUtil.getSessionFactory()
+						.getCurrentSession();
+				currentSession.beginTransaction();
+				try {
+					action.execute();
+					currentSession.getTransaction().commit();
+				} catch (Exception exception) {
+					System.out.println("Fehler aufgetreten: "
+							+ exception.getMessage());
+					currentSession.getTransaction().rollback();
+				}
+
+			} else {
+				try {
+					action.execute();
+				} catch (Exception exception) {
+					System.out.println("Fehler aufgetreten: "
+							+ exception.getMessage());
+				}
 			}
 		}
 	}

@@ -14,8 +14,13 @@ public final class DAOFactory {
 	private DAOFactory() {
 		// Do nothing
 	}
-	
-	public static RoomDAOImpl createRoomDAO(){
-		return new RoomDAOImpl();
+
+	/**
+	 * Returns the {@link RoomDAO} instance.
+	 * 
+	 * @return an instance of the DAO.
+	 */
+	public static RoomDAO createRoomDAO() {
+		return new RoomDAO();
 	}
 }
