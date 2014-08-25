@@ -25,4 +25,16 @@
 		<property name="lecturer" not-null="true"/>
 		<property name="title" not-null="true" />
 	</class>
+	
+	<class name="de.nordakademie.roommgmt.model.Lecture" table="LECTURE">
+		<id name="id">
+			<generator class="native" />
+		</id>
+		
+		<property name="beginDate" not-null="true"/>
+		<property name="endDate" not-null="true"/>
+		
+		<!-- Assoziation don't use property! -->
+		<many-to-one name="course" not-null="true" column="COURSE_ID"/>
+	</class>
 </hibernate-mapping>

@@ -1,5 +1,6 @@
 package de.nordakademie.roommgmt.dao;
 
+
 /**
  * The dao factory. This class cannot be instantiated but provides static
  * methods to create (singleton) instances of the daos.
@@ -26,5 +27,9 @@ public final class DAOFactory {
 
 	public static CourseDAO createCourseDAO() {
 		return new CourseDAO();
+	}
+
+	public static LectureDAO createLectureDAO() {
+		return new LectureDAO();
 	}
 }
