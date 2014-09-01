@@ -39,8 +39,8 @@ public class RoomManagement {
 		actions.add(new ShowCourseAction());
 		actions.add(new UpdateCourseAction());
 		actions.add(new ListCourseAction());
-		actions.add(new ExitAction());
 		actions.add(new CreateLectureAction());
+		actions.add(new ExitAction());
 
 		controller.setActions(actions);
 		// Show menu

@@ -78,4 +78,5 @@ public class RoomDAO {
 		Room room = loadRoom(roomId);
 		HibernateUtil.getSessionFactory().getCurrentSession().delete(room);
 	}
+
 }

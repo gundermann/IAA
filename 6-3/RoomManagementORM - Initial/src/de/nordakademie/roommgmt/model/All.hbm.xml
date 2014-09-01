@@ -3,6 +3,8 @@
   "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
+
+<!-- ROOM -->
 	<class name="de.nordakademie.roommgmt.model.Room" table="ROOM">
 		<id name="id">
 			<generator class="native" />
@@ -13,7 +15,15 @@
 		</natural-id>
 		<property name="seats" />
 		<property name="beamer" type="boolean" />
+		
+		<set name="lectures" inverse="true" cascade="all-delete-orphan">
+			<key column="ROOM_ID"/>
+			<one-to-many class="de.nordakademie.roommgmt.model.Lecture"/>
+		</set>
 	</class>
+	
+	
+	<!-- COURSE -->
 		<class name="de.nordakademie.roommgmt.model.Course" table="COURSE">
 		<id name="id">
 			<generator class="native" />
@@ -24,8 +34,15 @@
 		<property name="fieldOfStudy" not-null="true" column="FIELD_OF_STUDY" />
 		<property name="lecturer" not-null="true"/>
 		<property name="title" not-null="true" />
+		
+		<set name="lectures" inverse="true" cascade="all-delete-orphan">
+			<key column="COURSE_ID"/>
+			<one-to-many class="de.nordakademie.roommgmt.model.Lecture" />
+			</set>
 	</class>
 	
+	
+	<!-- LECTURE -->
 	<class name="de.nordakademie.roommgmt.model.Lecture" table="LECTURE">
 		<id name="id">
 			<generator class="native" />
@@ -36,5 +53,6 @@
 		
 		<!-- Assoziation don't use property! -->
 		<many-to-one name="course" not-null="true" column="COURSE_ID"/>
+		<many-to-one name="room" not-null="true" column="ROOM_ID"/>
 	</class>
 </hibernate-mapping>

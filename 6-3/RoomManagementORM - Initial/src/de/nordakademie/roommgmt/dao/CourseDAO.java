@@ -43,4 +43,13 @@ public class CourseDAO {
 		if (course == null)
 			throw new CourseNotFoundException();
 	}
+
+	public Course loadCourseByNumber(long courseNumber) {
+		Course course;
+		course = (Course) HibernateUtil.getSessionFactory().getCurrentSession()
+				.get(Course.class, courseNumber);
+		if (course == null)
+			throw new CourseNotFoundException();
+		return course;
+	}
 }

@@ -8,6 +8,7 @@ public class Lecture {
 	private Date beginDate;
 	private Date endDate;
 	private Course course;
+	private Room room;
 
 	public long getId() {
 		return id;
@@ -40,5 +41,15 @@ public class Lecture {
 	public void setCourse(Course course) {
 		this.course = course;
 	}
+
+	public Room getRoom() {
+		return room;
+	}
+
+	public void setRoom(Room room) {
+		this.room = room;
+	}
+	
+	
 
 }

@@ -1,6 +1,7 @@
 package de.nordakademie.roommgmt.model;
 
 import java.io.Serializable;
+import java.util.Set;
 
 /**
  * The room entity.
@@ -20,6 +21,8 @@ public class Room implements Serializable {
 	private int seats;
 	/** The beamer information. */
 	private boolean beamer;
+	
+	private Set<Lecture> lectures;
 
 	public Long getId() {
 		return id;
@@ -91,4 +94,31 @@ public class Room implements Serializable {
 			return false;
 		return true;
 	}
+
+	public Set<Lecture> getLectures() {
+		return lectures;
+	}
+
+	public void setLectures(Set<Lecture> lectures) {
+		this.lectures = lectures;
+	}
+
+	public void assoziateLecture(Lecture lecture) {
+		if (lecture == null) {
+			throw new IllegalArgumentException();
+		}
+		if (lecture.getRoom() == null) {
+			lecture.setRoom(this);
+			
+		}
+		else if(!lecture.getRoom().equals(this)) {
+			lecture.getRoom().getLectures().remove(lecture);
+			lecture.setRoom(this);
+		}
+		if(!lectures.contains(lecture)){
+			lectures.add(lecture);
+		}
+	
+	}
+	
 }

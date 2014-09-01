@@ -1,5 +1,7 @@
 package de.nordakademie.roommgmt.model;
 
+import java.util.Set;
+
 public class Course {
 
 	private Long id;
@@ -7,8 +9,9 @@ public class Course {
 	private int number;
 	private String lecturer;
 	private String title;
-	
-	public Course(){
+	private Set<Lecture> lectures;
+
+	public Course() {
 	}
 
 	public Long getId() {
@@ -51,5 +54,29 @@ public class Course {
 		this.title = title;
 	}
 
+	public Set<Lecture> getLectures() {
+		return lectures;
+	}
+
+	public void setLectures(Set<Lecture> lectures) {
+		this.lectures = lectures;
+	}
+
+	public void associateLecture(Lecture lecture) {
+		if (lecture == null) {
+			throw new IllegalArgumentException();
+		}
+		if (lecture.getCourse() == null) {
+			lecture.setCourse(this);
+			
+		}
+		else if(!lecture.getCourse().equals(this)) {
+			lecture.getCourse().getLectures().remove(lecture);
+			lecture.setCourse(this);
+		}
+		if(!lectures.contains(lecture)){
+			lectures.add(lecture);
+		}
+	}
 
 }

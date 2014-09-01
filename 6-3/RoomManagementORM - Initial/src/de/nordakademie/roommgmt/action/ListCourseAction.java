@@ -1,9 +1,11 @@
 package de.nordakademie.roommgmt.action;
 
+import java.text.DateFormat;
 import java.util.List;
 
 import de.nordakademie.roommgmt.dao.CourseDAO;
 import de.nordakademie.roommgmt.model.Course;
+import de.nordakademie.roommgmt.model.Lecture;
 import de.nordakademie.roommgmt.model.Room;
 
 /**
@@ -26,7 +28,14 @@ public class ListCourseAction extends DatabaseAction {
 			System.out.printf("Kurs mit ID %1$d:%n", course.getId());
 			System.out.printf(" - Kurs %s-%d; Fach: %s, Dozent: %s; id %d%n",
 					course.getTitle(), course.getNumber(),
-					course.getFieldOfStudy(), course.getLecturer(), course.getId());
+					course.getFieldOfStudy(), course.getLecturer(),
+					course.getId());
+
+			for (Lecture lecture : course.getLectures()) {
+				System.out.printf(" - * Veranstaltung am %s", DateFormat
+						.getTimeInstance().format(lecture.getBeginDate()));
+			}
+			
 			System.out.println("---------------------------");
 		}
 	}
