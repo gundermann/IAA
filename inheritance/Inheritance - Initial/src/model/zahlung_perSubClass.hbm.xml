@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="model">
+	<class name="Zahlung" abstract="true">
+		<id name="id">
+			<generator class="sequence"></generator>
+		</id>
+		<property name="inhaber" />
+
+		<union-subclass name="Kreditkartenzahlung">
+			<property name="typ" />
+		</union-subclass>
+
+		<union-subclass name="Lastschriftzahlung">
+			<property name="kontonummer" />
+		</union-subclass>
+	</class>
+
+</hibernate-mapping>
