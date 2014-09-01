@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="model">
+	<class name="Zahlung" abstract="true">
+		<id name="id">
+			<generator class="native"></generator>
+		</id>
+		<property name="inhaber" />
+
+		<joined-subclass name="Kreditkartenzahlung">
+			<key column="ZAHLUNG_ID"></key>
+
+			<property name="typ" />
+		</joined-subclass>
+
+		<joined-subclass name="Lastschriftzahlung">
+			<key column="ZAHLUNG_ID"></key>
+			<property name="kontonummer" />
+		</joined-subclass>
+	</class>
+
+</hibernate-mapping>
